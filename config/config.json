@@ -1,0 +1,5 @@
+{
+  "CAMPAIGN_SERVICE_BASE_URL": "http://localhost:7070/campaigns",
+  "EMAIL_TEMPLATE_SERVICE_BASE_URL": "http://localhost:7071/email/templates",
+  "RECIPIENT_SERVICE_BASE_URL": "http://localhost:7072/recipients"
+}
