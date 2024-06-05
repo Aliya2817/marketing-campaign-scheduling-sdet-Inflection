@@ -5,7 +5,7 @@ import pytest
 import requests
 from faker import Faker
 
-from ..config import settings
+from config import settings
 
 
 @pytest.fixture
@@ -85,8 +85,10 @@ def test_invalid_email_template_create_campaign(invalid_email_template_campaign_
     assert errors[0]['errorCode'] == 'CAM-E-002'
 
 
-def test_duplicate_create_campaign(payload):
-    response = create_campaign(payload)
+def test_duplicate_create_campaign_test(successful_campaign_payload):
+    # Creating campaign twice to make it duplicate
+    create_campaign(successful_campaign_payload)
+    response = create_campaign(successful_campaign_payload)
 
     # Validate the response status code
     assert response.status_code == 409
@@ -137,5 +139,3 @@ def test_successful_create_campaign(successful_campaign_payload):
         datetime.fromisoformat(meta['timestamp'].replace('Z', '+00:00'))
     except ValueError:
         assert False, "Timestamp format is invalid"
-
-    test_duplicate_create_campaign(successful_campaign_payload)
