@@ -1,7 +1,8 @@
 # Parsing env
 import json
+import os
 
-config_path = 'config/config.json'
+config_path = os.path.abspath(os.path.dirname(__file__)) + '/config.json'
 
 with open(config_path) as f:
     data = json.load(f)
